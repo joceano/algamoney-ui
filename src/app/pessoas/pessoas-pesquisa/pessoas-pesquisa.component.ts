@@ -32,7 +32,8 @@ export class PessoasPesquisaComponent {
       .then(resultado => {
         this.totalRegistros = resultado.total;
         this.pessoas = resultado.pessoas;
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   aoMudarPagina(event: LazyLoadEvent) {
@@ -58,6 +59,19 @@ export class PessoasPesquisaComponent {
           this.grid.first = 0;
         }
         this.toasty.success('Pessoa excluída com sucesso!');
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  mudarStatus(pessoa: any) {
+    const novoStatus = !pessoa.ativo;
+
+    this.pessoaService.mudarStatus(pessoa.codigo, novoStatus)
+      .then(() => {
+        const acao = novoStatus ? 'ativada' : 'desativada';
+
+        pessoa.ativo = novoStatus;
+        this.toasty.success(`Pessoa ${acao} com sucesso!`);
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
