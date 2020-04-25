@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorHandlerService } from './error-handler.service';
 import { PessoaService } from './../pessoas/pessoa.service';
 import { LancamentoService } from './../lancamentos/lancamento.service';
+import { CategoriaService } from './../categorias/categoria.service';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { LancamentoService } from './../lancamentos/lancamento.service';
   providers: [
     LancamentoService,
     PessoaService,
+    CategoriaService,
     ErrorHandlerService,
 
     ConfirmationService,
