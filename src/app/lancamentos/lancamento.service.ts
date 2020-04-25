@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import * as moment from 'moment';
 
+import { Lancamento } from './../core/model';
+
 export class LancamentoFiltro {
   descricao: string;
   dataVencimentoInicio: Date;
@@ -65,6 +67,17 @@ export class LancamentoService {
     return this.http.delete(`${this.lancamentosUrl}/${codigo}`, { headers })
       .toPromise()
       .then(() => null);
+  }
+
+  adicionar(lancamento: Lancamento): Promise<Lancamento> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(this.lancamentosUrl,
+      JSON.stringify(lancamento), { headers })
+      .toPromise()
+      .then(response => response.json());
   }
 
 }
