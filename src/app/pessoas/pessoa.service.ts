@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import * as moment from 'moment';
 
+import { Pessoa } from 'app/core/model';
+
 export class PessoaFiltro {
   nome: string;
   pagina = 0;
@@ -72,5 +74,16 @@ export class PessoaService {
     return this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers })
       .toPromise()
       .then(() => null);
+  }
+
+  adicionar(pessoa: Pessoa): Promise<Pessoa> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(this.pessoasUrl,
+      JSON.stringify(pessoa), { headers })
+      .toPromise()
+      .then(response => response.json());
   }
 }

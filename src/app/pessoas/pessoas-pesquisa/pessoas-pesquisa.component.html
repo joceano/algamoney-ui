@@ -25,8 +25,8 @@
           (onLazyLoad)="aoMudarPagina($event)"
           #tabela>
         <p-column field="nome" header="Nome"></p-column>
-        <p-column field="cidade" header="Cidade"></p-column>
-        <p-column field="estado" header="Estado"></p-column>
+        <p-column field="endereco.cidade" header="Cidade"></p-column>
+        <p-column field="endereco.estado" header="Estado"></p-column>
         <p-column field="ativo" header="Status">
           <ng-template let-pes="rowData" pTemplate="body">
               <a href="javascript:;" [pTooltip]="pes.ativo ? 'Desativar' : 'Ativar'"
