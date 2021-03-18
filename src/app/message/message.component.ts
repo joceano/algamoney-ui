@@ -1,5 +1,5 @@
+import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-message',
@@ -17,8 +17,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MessageComponent {
 
-  @Input() error: string;
   @Input() control: FormControl;
+  @Input() error: string;
   @Input() text: string;
 
   temErro(): boolean {
