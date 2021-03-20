@@ -8,6 +8,8 @@ import { DataTableModule } from 'primeng/components/datatable/datatable';
 import { TooltipModule } from 'primeng/components/tooltip/tooltip';
 import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
 
+import { SharedModule } from './../shared/shared.module';
+
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
@@ -21,7 +23,9 @@ import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
     ButtonModule,
     DataTableModule,
     TooltipModule,
-    InputMaskModule
+    InputMaskModule,
+
+    SharedModule
   ],
   declarations: [
     PessoaCadastroComponent,
