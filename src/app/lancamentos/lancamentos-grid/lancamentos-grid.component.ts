@@ -13,10 +13,11 @@ export class LancamentosGridComponent {
   @Input() totalRegistros = 0;
   @Input() filtro: LancamentoFiltro;
 
-  @Output() mudarPagina = new EventEmitter();
+  @Output() pesquisar = new EventEmitter();
 
   aoMudarPagina(event: LazyLoadEvent) {
-    this.mudarPagina.emit(event);
+    const pagina = event.first / event.rows;
+    this.pesquisar.emit(pagina);
   }
 
 }
