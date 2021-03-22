@@ -1,7 +1,10 @@
 <p-dataTable [value]="lancamentos"
-             [rows]="5"
+             [rows]="filtro.itensPorPagina"
              [paginator]="true"
              [responsive]="true"
+             [lazy]="true"
+             [totalRecords]="totalRegistros"
+             (onLazyLoad)="aoMudarPagina($event)"
               emptyMessage="Nenhum lançamento encontrado">
   <p-column field="pessoa" header="Pessoa"></p-column>
   <p-column field="descricao" header="Descrição"></p-column>
