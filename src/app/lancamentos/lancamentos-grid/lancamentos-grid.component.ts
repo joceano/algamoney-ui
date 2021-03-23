@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/components/common/api';
-import { LancamentoFiltro } from '../lancamento.service';
+import { LancamentoFiltro, LancamentoService } from '../lancamento.service';
 
 @Component({
   selector: 'app-lancamentos-grid',
@@ -15,9 +15,20 @@ export class LancamentosGridComponent {
 
   @Output() pesquisar = new EventEmitter();
 
+  @ViewChild('tabela') grid;
+
+  constructor(private lancamentoService: LancamentoService) {}
+
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;
     this.pesquisar.emit(pagina);
+  }
+
+  excluir(lancamento: any) {
+    this.lancamentoService.excluir(lancamento.codigo)
+      .then(() => {
+        this.grid.first = 0;
+      });
   }
 
 }

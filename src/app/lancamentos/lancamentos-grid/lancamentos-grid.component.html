@@ -5,7 +5,8 @@
              [lazy]="true"
              [totalRecords]="totalRegistros"
              (onLazyLoad)="aoMudarPagina($event)"
-              emptyMessage="Nenhum lançamento encontrado">
+              emptyMessage="Nenhum lançamento encontrado"
+              #tabela>
   <p-column field="pessoa" header="Pessoa"></p-column>
   <p-column field="descricao" header="Descrição"></p-column>
   <p-column header="Vencimento" styleClass="col-data">
@@ -24,9 +25,9 @@
     </ng-template>
   </p-column>
   <p-column styleClass="col-acoes">
-    <ng-template pTemplate="body">
+    <ng-template pTemplate="body" let-lanc="rowData">
       <a pButton icon="fa-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-      <button pButton icon="fa-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+      <button pButton icon="fa-trash" pTooltip="Excluir" tooltipPosition="top" (click)="excluir(lanc)"></button>
     </ng-template>
   </p-column>
 </p-dataTable>
