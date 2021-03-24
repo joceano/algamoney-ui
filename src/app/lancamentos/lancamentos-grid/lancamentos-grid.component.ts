@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 
-import { LazyLoadEvent } from 'primeng/components/common/api';
+import { ConfirmationService, LazyLoadEvent } from 'primeng/components/common/api';
 import { ToastyService } from 'ng2-toasty';
 
 import { LancamentoFiltro, LancamentoService } from '../lancamento.service';
@@ -22,29 +22,46 @@ export class LancamentosGridComponent {
 
   constructor(
     private lancamentoService: LancamentoService,
-    private toasty: ToastyService
+    private toasty: ToastyService,
+    private confirmation: ConfirmationService
     ) {}
-
-  pesquisar(pagina = 0) {
-    this.executarPesquisa.emit(pagina);
-  }
 
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;
     this.pesquisar(pagina);
   }
 
-  excluir(lancamento: any) {
+  confirmarExclusao(lancamento: any) {
+    this.confirmation.confirm({
+      message: 'Tem certeza que deseja excluir?',
+      accept: () => {
+        this.excluir(lancamento);
+      }
+    });
+  }
+
+  private excluir(lancamento: any) {
     this.lancamentoService.excluir(lancamento.codigo)
       .then(() => {
-        if (this.grid.first === 0) {
-          this.pesquisar();
-        } else {
-          this.grid.first = 0;
-        }
-
-        this.toasty.success('Lançamento excluído com sucesso!')
+        this.exclusaoSucesso();
+        this.notificar('Lançamento excluído com sucesso!');
       });
+  }
+
+  private pesquisar(pagina = 0) {
+    this.executarPesquisa.emit(pagina);
+  }
+
+  private exclusaoSucesso() {
+    if (this.grid.first === 0) {
+      this.pesquisar();
+    } else {
+      this.grid.first = 0;
+    }
+  }
+
+  private notificar(mensagem: string) {
+    this.toasty.success(mensagem);
   }
 
 }
