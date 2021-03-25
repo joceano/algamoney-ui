@@ -5,7 +5,8 @@
              [lazy]="true"
              [totalRecords]="totalRegistros"
              (onLazyLoad)="aoMudarPagina($event)"
-             emptyMessage="Nenhuma pessoa encontrada">
+              emptyMessage="Nenhuma pessoa encontrada"
+              #tabela>
   <p-column field="nome" header="Nome"></p-column>
   <p-column field="endereco.cidade" header="Cidade"></p-column>
   <p-column field="endereco.estado" header="Estado"></p-column>
@@ -16,9 +17,9 @@
     </ng-template>
   </p-column>
   <p-column styleClass="col-acoes">
-    <ng-template pTemplate="body">
+    <ng-template pTemplate="body" let-pessoa="rowData">
       <a pButton icon="fa-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-      <button pButton icon="fa-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+      <button pButton icon="fa-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(pessoa)"></button>
     </ng-template>
   </p-column>
 </p-dataTable>
