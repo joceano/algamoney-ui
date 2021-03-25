@@ -4,6 +4,7 @@ import { ConfirmationService, LazyLoadEvent } from 'primeng/components/common/ap
 import { ToastyService } from 'ng2-toasty';
 
 import { LancamentoFiltro, LancamentoService } from '../lancamento.service';
+import { ErrorHandlerService } from './../../core/error-handler.service';
 
 @Component({
   selector: 'app-lancamentos-grid',
@@ -23,7 +24,8 @@ export class LancamentosGridComponent {
   constructor(
     private lancamentoService: LancamentoService,
     private toasty: ToastyService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
+    private errorHandler: ErrorHandlerService
     ) {}
 
   aoMudarPagina(event: LazyLoadEvent) {
@@ -45,7 +47,8 @@ export class LancamentosGridComponent {
       .then(() => {
         this.exclusaoSucesso();
         this.notificar('Lançamento excluído com sucesso!');
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   private pesquisar(pagina = 0) {
