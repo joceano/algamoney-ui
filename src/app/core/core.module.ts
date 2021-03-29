@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -14,6 +15,7 @@ import { CategoriaService } from 'app/categorias/categoria.service';
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
 
     ToastyModule.forRoot(),
     ConfirmDialogModule,
