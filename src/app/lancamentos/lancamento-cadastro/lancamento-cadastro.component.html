@@ -56,7 +56,7 @@
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar" [disabled]="lancamentoForm.invalid"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo(lancamentoForm)"></button>
         <a routerLink="/lancamentos">Voltar para a pesquisa</a>
       </div>
 
