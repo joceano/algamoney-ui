@@ -43,9 +43,6 @@ import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.co
     LancamentosPesquisaComponent,
     LancamentosGridComponent
   ],
-  exports: [
-    LancamentoCadastroComponent,
-    LancamentosPesquisaComponent
-  ]
+  exports: []
 })
 export class LancamentosModule { }
