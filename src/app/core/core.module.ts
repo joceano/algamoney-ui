@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -33,6 +34,7 @@ import { CategoriaService } from 'app/categorias/categoria.service';
     PessoaService,
     ConfirmationService,
     CategoriaService,
+    Title,
     { provide: LOCALE_ID, useValue: 'pt-BR'}
   ]
 })
