@@ -56,4 +56,8 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
 
+  temPermissao(permissao: string) {
+    return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
+  }
+
 }
