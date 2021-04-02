@@ -13,6 +13,7 @@ import { PessoaService } from './../pessoas/pessoa.service';
 import { LancamentoService } from './../lancamentos/lancamento.service';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { CategoriaService } from 'app/categorias/categoria.service';
+import { AuthService } from './../seguranca/auth.service';
 
 @NgModule({
   imports: [
@@ -32,8 +33,10 @@ import { CategoriaService } from 'app/categorias/categoria.service';
     ErrorHandlerService,
     LancamentoService,
     PessoaService,
-    ConfirmationService,
     CategoriaService,
+    AuthService,
+
+    ConfirmationService,
     Title,
     { provide: LOCALE_ID, useValue: 'pt-BR'}
   ]
