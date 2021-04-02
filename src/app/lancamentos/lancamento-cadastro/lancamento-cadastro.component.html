@@ -39,13 +39,15 @@
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Categoria</label>
-        <p-dropdown [options]="categorias" [autoWidth]="false" placeholder="Selecione" name="categoria" [(ngModel)]="lancamento.categoria.codigo" #categoria="ngModel" required></p-dropdown>
+        <p-dropdown [options]="categorias" [autoWidth]="false" placeholder="Selecione" name="categoria"
+          [(ngModel)]="lancamento.categoria.codigo" #categoria="ngModel" required></p-dropdown>
         <app-message [control]="categoria" error="required" text="Informe uma categoria"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Pessoa</label>
-        <p-dropdown [options]="pessoas" [autoWidth]="false" placeholder="Selecione" [filter]="true" name="pessoa" [(ngModel)]="lancamento.pessoa.codigo" #pessoa="ngModel" required></p-dropdown>
+        <p-dropdown [options]="pessoas" [autoWidth]="false" placeholder="Selecione" [filter]="true" name="pessoa"
+          [(ngModel)]="lancamento.pessoa.codigo" #pessoa="ngModel" required></p-dropdown>
         <app-message [control]="pessoa" error="required" text="Informe uma pessoa"></app-message>
       </div>
 

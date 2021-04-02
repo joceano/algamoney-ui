@@ -18,7 +18,8 @@ export class LancamentosPesquisaComponent implements OnInit{
   constructor(
     private lancamentoService: LancamentoService,
     private errorHandler: ErrorHandlerService,
-    private title: Title) {}
+    private title: Title
+  ) {}
 
   ngOnInit() {
     this.title.setTitle('Pesquisa de lançamentos');

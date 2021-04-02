@@ -35,7 +35,8 @@ export class LancamentoCadastroComponent implements OnInit {
     private toasty: ToastyService,
     private route: ActivatedRoute,
     private router: Router,
-    private title: Title) { }
+    private title: Title
+  ) { }
 
   ngOnInit() {
     this.title.setTitle('Novo lançamento');
