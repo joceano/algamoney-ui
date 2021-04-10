@@ -11,6 +11,7 @@ import { SegurancaRoutingModule } from './seguranca-routing.module';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { MoneyHttp } from './money-http';
 import { AuthService } from './auth.service';
+import { LogoutService } from './logout.service';
 import { AuthGuard } from './auth.guard';
 
 export function authHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
@@ -34,8 +35,13 @@ export function authHttpServiceFactory(auth: AuthService, http: Http, options: R
   ],
   declarations: [LoginFormComponent],
   providers: [
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [AuthService, Http, RequestOptions]
+    },
     AuthGuard,
-    {provide: AuthHttp, useFactory: authHttpServiceFactory, deps: [AuthService, Http, RequestOptions]}
+    LogoutService
   ]
 })
 export class SegurancaModule { }
