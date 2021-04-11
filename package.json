@@ -4,11 +4,12 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -29,9 +30,7 @@
     "ng2-toasty": "^4.0.3",
     "primeng": "^4.1.0",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
-  },
-  "devDependencies": {
+    "zone.js": "^0.8.4",
     "@angular/cli": "1.2.7",
     "@angular/compiler-cli": "^4.0.0",
     "@angular/language-service": "^4.0.0",
@@ -50,5 +49,11 @@
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
     "typescript": "^2.3.4"
+  },
+  "devDependencies": {
+  },
+  "engines": {
+    "node": "14.16.0",
+    "npm": "6.14.11"
   }
 }
