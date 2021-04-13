@@ -6,7 +6,8 @@ import localePt from '@angular/common/locales/pt';
 
 import { ToastyModule } from 'ng2-toasty';
 import { JwtHelper } from 'angular2-jwt';
-import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
@@ -14,7 +15,6 @@ import { NaoAutorizadoComponent } from './nao-autorizado.component';
 import { ErrorHandlerService } from './error-handler.service';
 import { PessoaService } from './../pessoas/pessoa.service';
 import { LancamentoService } from './../lancamentos/lancamento.service';
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { CategoriaService } from 'app/categorias/categoria.service';
 import { AuthService } from './../seguranca/auth.service';
 
