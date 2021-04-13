@@ -21,14 +21,26 @@ label {
   text-align: right;
 }
 
+.col-valor-header {
+  width: 120px;
+}
+
 .col-data {
   width: 120px;
   text-align: center;
 }
 
+.col-data-header {
+  width: 120px;
+}
+
 .col-acoes {
   width: 90px;
   text-align: center;
+}
+
+.col-acoes-header {
+  width: 90px;
 }
 
 a {

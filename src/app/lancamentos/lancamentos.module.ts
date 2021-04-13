@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { DataTableModule } from 'primeng/datatable';
+import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CalendarModule } from 'primeng/calendar';
@@ -26,7 +26,7 @@ import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.co
 
     InputTextModule,
     ButtonModule,
-    DataTableModule,
+    TableModule,
     TooltipModule,
     InputTextareaModule,
     CalendarModule,
