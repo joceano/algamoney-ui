@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { DataTableModule } from 'primeng/datatable';
+import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputMaskModule } from 'primeng/inputmask';
 
@@ -22,7 +22,7 @@ import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
 
     InputTextModule,
     ButtonModule,
-    DataTableModule,
+    TableModule,
     TooltipModule,
     InputMaskModule,
 
