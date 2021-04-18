@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { CoreModule } from './core/core.module';
-import { LancamentosModule } from './lancamentos/lancamentos.module';
-import { PessoasModule } from './pessoas/pessoas.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SegurancaModule } from './seguranca/seguranca.module';
 
@@ -21,8 +19,6 @@ import { AppComponent } from './app.component';
     HttpModule,
 
     CoreModule,
-    LancamentosModule,
-    PessoasModule,
     SegurancaModule,
     AppRoutingModule
   ],
