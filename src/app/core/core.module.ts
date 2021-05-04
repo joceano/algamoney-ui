@@ -17,6 +17,7 @@ import { PessoaService } from './../pessoas/pessoa.service';
 import { LancamentoService } from './../lancamentos/lancamento.service';
 import { CategoriaService } from 'app/categorias/categoria.service';
 import { AuthService } from './../seguranca/auth.service';
+import { DashboardService } from '../dashboard/dashboard.service';
 
 registerLocaleData(localePt);
 
@@ -44,6 +45,7 @@ registerLocaleData(localePt);
     PessoaService,
     CategoriaService,
     AuthService,
+    DashboardService,
 
     ConfirmationService,
     JwtHelper,
