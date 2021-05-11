@@ -18,6 +18,7 @@ import { LancamentoService } from './../lancamentos/lancamento.service';
 import { CategoriaService } from 'app/categorias/categoria.service';
 import { AuthService } from './../seguranca/auth.service';
 import { DashboardService } from '../dashboard/dashboard.service';
+import { RelatoriosService } from './../relatorios/relatorios.service';
 
 registerLocaleData(localePt);
 
@@ -46,6 +47,7 @@ registerLocaleData(localePt);
     CategoriaService,
     AuthService,
     DashboardService,
+    RelatoriosService,
 
     ConfirmationService,
     JwtHelper,
