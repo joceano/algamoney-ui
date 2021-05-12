@@ -59,6 +59,10 @@
         <p-panel header="Contatos">
           <div class="ui-g">
             <div class="ui-g-12">
+              <button pButton label="Novo" icon="fa-plus" type="button"
+                class="ui-button-secondary" (click)="prepararNovoContato()"></button>
+            </div>
+            <div class="ui-g-12">
               <p-table [value]="pessoa.contatos" [responsive]="true">
 
                 <ng-template pTemplate="header">
@@ -106,3 +110,7 @@
 
   </form>
 </div>
+
+<p-dialog header="Novo Contato" [(visible)]="exbindoFormularioContato" modal="modal">
+
+</p-dialog>

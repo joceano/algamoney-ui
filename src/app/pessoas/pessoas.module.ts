@@ -8,6 +8,7 @@ import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputMaskModule } from 'primeng/inputmask';
 import { PanelModule } from 'primeng/panel';
+import { DialogModule } from 'primeng/dialog';
 
 import { SharedModule } from './../shared/shared.module';
 import { PessoasRoutingModule } from './pessoas-routing.module';
@@ -27,6 +28,7 @@ import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
     TooltipModule,
     InputMaskModule,
     PanelModule,
+    DialogModule,
 
     SharedModule,
     PessoasRoutingModule
