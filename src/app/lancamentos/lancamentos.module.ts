@@ -10,6 +10,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CalendarModule } from 'primeng/calendar';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DropdownModule } from 'primeng/dropdown';
+import { FileUploadModule } from 'primeng/fileupload';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { SharedModule } from './../shared/shared.module';
@@ -33,6 +34,7 @@ import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.co
     CalendarModule,
     SelectButtonModule,
     DropdownModule,
+    FileUploadModule,
 
     CurrencyMaskModule,
 
