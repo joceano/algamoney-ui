@@ -16,6 +16,7 @@ import { PessoasRoutingModule } from './pessoas-routing.module';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
+import { PessoaCadastroContatoComponent } from './pessoa-cadastro-contato/pessoa-cadastro-contato.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
   declarations: [
     PessoaCadastroComponent,
     PessoasPesquisaComponent,
-    PessoasGridComponent
+    PessoasGridComponent,
+    PessoaCadastroContatoComponent
   ],
   exports: []
 })
