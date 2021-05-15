@@ -60,7 +60,8 @@
           chooseLabel="Anexar" accept="image/*,application/*"
           [url]="urlUploadAnexo"
           (onBeforeSend)="antesUploadAnexo($event)"
-          (onUpload)="aoTerminarUploadAnexo($event)"></p-fileUpload>
+          (onUpload)="aoTerminarUploadAnexo($event)"
+          (onError)="erroUpload($event)"></p-fileUpload>
       </div>
 
       <div class="ui-g-12 ui-fluid" dir="rtl" *ngIf="formulario.get('anexo').value">
