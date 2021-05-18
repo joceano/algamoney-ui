@@ -51,3 +51,7 @@ a {
 a:hover, a:focus {
   text-decoration: underline;
 }
+
+a, button {
+  margin-right: .25em;
+}
