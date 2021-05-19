@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { ToastyService } from 'ng2-toasty';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { CategoriaService } from 'app/categorias/categoria.service';
@@ -33,7 +33,7 @@ export class LancamentoCadastroComponent implements OnInit {
     private pessoaService: PessoaService,
     private lancamentoService: LancamentoService,
     private errorHandler: ErrorHandlerService,
-    private toasty: ToastyService,
+    private messageService: MessageService,
     private route: ActivatedRoute,
     private router: Router,
     private title: Title,
@@ -69,7 +69,7 @@ export class LancamentoCadastroComponent implements OnInit {
 
   erroUpload(event) {
     this.uploadEmAndamento = false;
-    this.toasty.error('Erro ao tentar enviar anexo!');
+    this.messageService.add({ severity: 'error', detail: 'Erro ao tentar enviar anexo!' });
   }
 
   configurarURLcomProtocolo() {
@@ -161,7 +161,7 @@ export class LancamentoCadastroComponent implements OnInit {
       .then(lancamento => {
         this.formulario.patchValue(lancamento);
         this.atualizarTituloEdicao();
-        this.toasty.success('Lançamento alterado com sucesso!');
+        this.messageService.add({ severity: 'success', detail: 'Lançamento alterado com sucesso!' });
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -169,7 +169,7 @@ export class LancamentoCadastroComponent implements OnInit {
   private adicionarLancamento() {
     this.lancamentoService.adicionar(this.formulario.value)
       .then(lancamentoAdicionado => {
-        this.toasty.success('Lançamento adicionado com sucesso!');
+        this.messageService.add({ severity: 'success', detail: 'Lançamento adicionado com sucesso!' });
         this.router.navigate(['/lancamentos', lancamentoAdicionado.codigo]);
       })
       .catch(erro => this.errorHandler.handle(erro));

@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 
 import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
-import { ToastyService } from 'ng2-toasty';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 import { PessoaFiltro } from '../pessoa.service';
 import { PessoaService } from './../pessoa.service';
@@ -25,7 +25,7 @@ export class PessoasGridComponent {
   constructor(
     private confirmation: ConfirmationService,
     private pessoaService: PessoaService,
-    private toasty: ToastyService,
+    private messageService: MessageService,
     private errorHandler: ErrorHandlerService
   ) {}
 
@@ -35,7 +35,7 @@ export class PessoasGridComponent {
       .then(() => {
         const acao = novoStatus ? 'ativada' : 'desativada';
         pessoa.ativo = novoStatus;
-        this.toasty.success(`Pessoa ${acao} com sucesso!`);
+        this.messageService.add({ severity: 'success', detail: `Pessoa ${acao} com sucesso!` });
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -76,7 +76,7 @@ export class PessoasGridComponent {
   }
 
   private notificar(mensagem: string) {
-    this.toasty.success(mensagem);
+    this.messageService.add({ severity: 'success', detail: mensagem });
   }
 
 }
