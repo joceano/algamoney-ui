@@ -1,4 +1,4 @@
-import { HttpParams } from '@angular/common/http';
+import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
@@ -65,7 +65,10 @@ export class PessoaService {
   }
 
   mudarStatus(codigo: number, ativo: boolean): Promise<void> {
-    return this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo)
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+
+      return this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers })
       .toPromise()
       .then(() => null);
   }
