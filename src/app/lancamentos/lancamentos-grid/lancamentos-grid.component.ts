@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/components/common/messageservice';
 import { LancamentoFiltro, LancamentoService } from '../lancamento.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { AuthService } from './../../seguranca/auth.service';
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'app-lancamentos-grid',
@@ -19,8 +20,7 @@ export class LancamentosGridComponent {
   @Input() filtro: LancamentoFiltro;
 
   @Output() executarPesquisa = new EventEmitter();
-
-  @ViewChild('tabela') grid;
+  @ViewChild('tabela', {static: false}) public grid: Table;
 
   constructor(
     private lancamentoService: LancamentoService,

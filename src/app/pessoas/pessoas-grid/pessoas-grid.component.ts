@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/components/common/messageservice';
 import { PessoaFiltro } from '../pessoa.service';
 import { PessoaService } from './../pessoa.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
+import {Table} from 'primeng/table';
 
 @Component({
   selector: 'app-pessoas-grid',
@@ -19,8 +20,7 @@ export class PessoasGridComponent {
   @Input() filtro: PessoaFiltro;
 
   @Output() executarPesquisa = new EventEmitter();
-
-  @ViewChild('tabela') grid;
+  @ViewChild('tabela', {static: false}) public grid: Table;
 
   constructor(
     private confirmation: ConfirmationService,
