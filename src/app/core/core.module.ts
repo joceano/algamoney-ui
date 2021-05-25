@@ -2,9 +2,10 @@ import { Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import localePt from '@angular/common/locales/pt';
 
-import { JwtHelper } from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { GrowlModule } from 'primeng/growl';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
@@ -20,12 +21,14 @@ import { CategoriaService } from 'app/categorias/categoria.service';
 import { AuthService } from './../seguranca/auth.service';
 import { DashboardService } from '../dashboard/dashboard.service';
 import { RelatoriosService } from './../relatorios/relatorios.service';
+import { MoneyHttp } from './../seguranca/money-http';
 
 registerLocaleData(localePt);
 
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     RouterModule,
 
     GrowlModule,
@@ -49,10 +52,11 @@ registerLocaleData(localePt);
     AuthService,
     DashboardService,
     RelatoriosService,
+    MoneyHttp,
 
     ConfirmationService,
     MessageService,
-    JwtHelper,
+    JwtHelperService,
     Title,
     { provide: LOCALE_ID, useValue: 'pt' }
   ]

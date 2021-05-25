@@ -1,53 +1,50 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, RequestOptionsArgs, Response } from '@angular/http';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
-import { AuthConfig, AuthHttp, JwtHelper } from 'angular2-jwt';
-import { Observable } from 'rxjs/Observable';
-
+import { Observable, from as observableFromPromise } from 'rxjs';
 import { AuthService } from './auth.service';
 
 export class NotAuthenticatedError {}
 
 @Injectable()
-export class MoneyHttp extends AuthHttp {
+export class MoneyHttp extends HttpClient {
 
   constructor(
     private auth: AuthService,
-    options: AuthConfig,
-    http: Http, defOpts?: RequestOptions
+    private httpHandler: HttpHandler
   ) {
-    super(options, http, defOpts);
+    super(httpHandler);
   }
 
-  public delete(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.fazerRequisicao(() => super.delete(url, options));
+  public delete<T>(url: string, options?: any): Observable<T> {
+    return this.fazerRequisicao<T>(() => super.delete<T>(url, options));
   }
 
-  public patch(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
-    return this.fazerRequisicao(() => super.patch(url, options));
+  public patch<T>(url: string, body: any, options?: any): Observable<T> {
+    return this.fazerRequisicao<T>(() => super.patch<T>(url, options));
   }
 
-  public head(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.fazerRequisicao(() => super.head(url, options));
+  public head<T>(url: string, options?: any): Observable<T> {
+    return this.fazerRequisicao<T>(() => super.head<T>(url, options));
   }
 
-  public options(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.fazerRequisicao(() => super.options(url, options));
+  public options<T>(url: string, options?: any): Observable<T> {
+    return this.fazerRequisicao<T>(() => super.options<T>(url, options));
   }
 
-  public get(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.fazerRequisicao(() => super.get(url, options));
+  public get<T>(url: string, options?: any): Observable<T> {
+    return this.fazerRequisicao<T>(() => super.get<T>(url, options));
   }
 
-  public post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
-    return this.fazerRequisicao(() => super.post(url, body, options));
+  public post<T>(url: string, body: any, options?: any): Observable<T> {
+    return this.fazerRequisicao<T>(() => super.post<T>(url, body, options));
   }
 
-  public put(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
-    return this.fazerRequisicao(() => super.put(url, body, options));
+  public put<T>(url: string, body: any, options?: any): Observable<T> {
+    return this.fazerRequisicao<T>(() => super.put<T>(url, body, options));
   }
 
-  private fazerRequisicao(fn: Function): Observable<Response> {
+  private fazerRequisicao<T>(fn: Function): Observable<T> {
     if (this.auth.isAccessTokenInvalido()) {
       console.log('Requisição HTTP com access token inválido. Obtendo novo token...');
 
@@ -59,7 +56,7 @@ export class MoneyHttp extends AuthHttp {
           return fn().toPromise();
         });
 
-      return Observable.fromPromise(chamadaNovoAccessToken);
+      return observableFromPromise(chamadaNovoAccessToken);
     } else {
       return fn();
     }
