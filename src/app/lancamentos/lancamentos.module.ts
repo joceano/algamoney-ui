@@ -12,7 +12,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 import { SharedModule } from './../shared/shared.module';
 import { LancamentosRoutingModule } from './lancamentos-routing.module';
@@ -38,7 +38,7 @@ import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.co
     FileUploadModule,
     ProgressSpinnerModule,
 
-    CurrencyMaskModule,
+    NgxCurrencyModule,
 
     SharedModule,
     LancamentosRoutingModule

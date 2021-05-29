@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 
-import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
-import { MessageService } from 'primeng/components/common/messageservice';
+import { LazyLoadEvent, ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 import { PessoaFiltro } from '../pessoa.service';
 import { PessoaService } from './../pessoa.service';

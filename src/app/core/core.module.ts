@@ -6,10 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import localePt from '@angular/common/locales/pt';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { GrowlModule } from 'primeng/growl';
+import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
-import { MessageService } from 'primeng/components/common/messageservice';
+import { MessageService } from 'primeng/api';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
@@ -31,7 +31,7 @@ registerLocaleData(localePt);
     HttpClientModule,
     RouterModule,
 
-    GrowlModule,
+    ToastModule,
     ConfirmDialogModule,
   ],
   declarations: [
@@ -41,7 +41,7 @@ registerLocaleData(localePt);
   ],
   exports: [
     NavbarComponent,
-    GrowlModule,
+    ToastModule,
     ConfirmDialogModule
   ],
   providers: [

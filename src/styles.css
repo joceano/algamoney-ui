@@ -2,11 +2,28 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  color: #404c51;
+  color: #404C51;
+}
+
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+a, button {
+  margin-right: .25em
 }
 
 label {
   font-weight: bold;
+}
+
+.ui-dropdown-filter-container {
+  width: 100%;
 }
 
 @media (min-width: 1200px) {
@@ -41,17 +58,4 @@ label {
 
 .col-acoes-header {
   width: 100px;
-}
-
-a {
-  color: #337ab7;
-  text-decoration: none;
-}
-
-a:hover, a:focus {
-  text-decoration: underline;
-}
-
-a, button {
-  margin-right: .25em;
 }

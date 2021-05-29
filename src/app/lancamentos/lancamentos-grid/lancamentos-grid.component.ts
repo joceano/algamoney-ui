@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 
-import { ConfirmationService, LazyLoadEvent } from 'primeng/components/common/api';
-import { MessageService } from 'primeng/components/common/messageservice';
+import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 import { LancamentoFiltro, LancamentoService } from '../lancamento.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
