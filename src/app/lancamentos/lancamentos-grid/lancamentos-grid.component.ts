@@ -27,11 +27,14 @@ export class LancamentosGridComponent {
     private messageService: MessageService,
     private confirmation: ConfirmationService,
     private errorHandler: ErrorHandlerService,
-    private auth: AuthService
+    public auth: AuthService
     ) {}
 
   aoMudarPagina(event: LazyLoadEvent) {
-    const pagina = event.first / event.rows;
+    let pagina = 0;
+    if (event.first && event.rows) {
+      pagina = event.first / event.rows
+    };
     this.pesquisar(pagina);
   }
 

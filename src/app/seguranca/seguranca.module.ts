@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { SegurancaRoutingModule } from './seguranca-routing.module';
@@ -24,12 +25,13 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: environment.tokenWhitelistedDomains,
-        blacklistedRoutes: environment.tokenBlacklistedRoutes
+        allowedDomains: environment.tokenWhitelistedDomains,
+        disallowedRoutes: environment.tokenBlacklistedRoutes
       }
     }),
     InputTextModule,
     ButtonModule,
+    CardModule,
 
     SegurancaRoutingModule
   ],

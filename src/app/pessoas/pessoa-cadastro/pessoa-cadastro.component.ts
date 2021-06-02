@@ -7,7 +7,7 @@ import { MessageService } from 'primeng/api';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { PessoaService } from './../pessoa.service';
-import { Contato, Pessoa } from 'app/core/model';
+import { Pessoa } from './../../core/model';
 
 @Component({
   selector: 'app-pessoa-cadastro',
@@ -17,9 +17,9 @@ import { Contato, Pessoa } from 'app/core/model';
 export class PessoaCadastroComponent implements OnInit {
 
   pessoa = new Pessoa();
-  estados: any[];
-  cidades: any[];
-  estadoSelecionado: number;
+  estados: any[] = [];
+  cidades: any[] = [];
+  estadoSelecionado = 0;
 
   constructor(
     private pessoaService: PessoaService,
@@ -64,7 +64,7 @@ export class PessoaCadastroComponent implements OnInit {
         this.pessoa = pessoa;
 
         this.estadoSelecionado = (this.pessoa.endereco.cidade) ?
-                this.pessoa.endereco.cidade.estado.codigo : null;
+                this.pessoa.endereco.cidade.estado.codigo : 0;
 
         if (this.estadoSelecionado) {
           this.carregarCidades();
@@ -75,7 +75,7 @@ export class PessoaCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  salvar(form: FormControl) {
+  salvar(form: any) {
     if (this.editando) {
       this.atualizarPessoa(form);
     } else {
@@ -83,15 +83,15 @@ export class PessoaCadastroComponent implements OnInit {
     }
   }
 
-  novo(form: FormControl) {
+  novo(form: any) {
     form.reset();
     setTimeout(function() {
-      this.pessoa = new Pessoa();
+      // this.pessoa = new Pessoa();
     }.bind(this), 1);
     this.router.navigate(['/pessoas/nova']);
   }
 
-  private atualizarPessoa(form: FormControl) {
+  private atualizarPessoa(form: any) {
     this.pessoaService.atualizar(this.pessoa)
       .then(pessoa => {
         this.pessoa = pessoa;
@@ -101,7 +101,7 @@ export class PessoaCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  private adicionarPessoa(form: FormControl) {
+  private adicionarPessoa(form: any) {
     this.pessoaService.adicionar(this.pessoa)
       .then(pessoaAdicionada => {
         this.messageService.add({ severity: 'success', detail: 'Pessoa adicionada com sucesso!' });

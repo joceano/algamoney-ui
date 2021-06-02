@@ -1,13 +1,7 @@
 <nav class="navbar">
-
   <div class="container">
-    <div class="ui-g">
-      <div class="ui-g-12">
-        <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"><i class="fa fa-bars"></i></a>
-      </div>
-    </div>
+    <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"><i class="fa fa-bars"></i></a>
   </div>
-
   <ul class="navbar-menu" [hidden]="!exibindoMenu">
     <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li>
     <li class="navbar-menuitem" routerLinkActive="ativo"

@@ -41,7 +41,10 @@ export class PessoasGridComponent {
   }
 
   aoMudarPagina(event: LazyLoadEvent) {
-    const pagina = event.first / event.rows;
+    let pagina = 0;
+    if (event.first && event.rows){
+      pagina = event.first / event.rows;
+    }
     this.pesquisar(pagina);
   }
 

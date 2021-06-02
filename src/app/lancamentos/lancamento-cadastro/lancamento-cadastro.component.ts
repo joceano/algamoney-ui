@@ -6,10 +6,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
-import { CategoriaService } from 'app/categorias/categoria.service';
+import { CategoriaService } from './../../categorias/categoria.service';
 import { PessoaService } from './../../pessoas/pessoa.service';
 import { LancamentoService } from './../lancamento.service';
-import { Lancamento } from 'app/core/model';
+import { Lancamento } from './../../core/model';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -25,7 +25,7 @@ export class LancamentoCadastroComponent implements OnInit {
 
   categorias = [];
   pessoas = [];
-  formulario: FormGroup;
+  formulario: any;
   uploadEmAndamento = false;
 
   constructor(
@@ -53,12 +53,12 @@ export class LancamentoCadastroComponent implements OnInit {
     this.carregarPessoas();
   }
 
-  antesUploadAnexo(event) {
+  antesUploadAnexo(event: any) {
     this.uploadEmAndamento = true;
     event.xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
   }
 
-  aoTerminarUploadAnexo(event) {
+  aoTerminarUploadAnexo(event: any) {
     const anexo = JSON.parse(event.xhr.response);
     this.formulario.patchValue({
       anexo: anexo.nome,
@@ -67,7 +67,7 @@ export class LancamentoCadastroComponent implements OnInit {
     this.uploadEmAndamento = false;
   }
 
-  erroUpload(event) {
+  erroUpload(event: any) {
     this.uploadEmAndamento = false;
     this.messageService.add({ severity: 'error', detail: 'Erro ao tentar enviar anexo!' });
   }
@@ -151,7 +151,7 @@ export class LancamentoCadastroComponent implements OnInit {
   novo() {
     this.formulario.reset();
     setTimeout(function() {
-      this.lancamento = new Lancamento();
+      // this.lancamento = new Lancamento();
     }.bind(this), 1);
     this.router.navigate(['/lancamentos/novo']);
   }
@@ -178,7 +178,7 @@ export class LancamentoCadastroComponent implements OnInit {
   private carregarCategorias() {
     return this.categoriaService.listarTodas()
       .then(categorias => {
-        this.categorias = categorias.map(c => ({ label: c.nome, value: c.codigo }));
+        this.categorias = categorias.map((c: any) => ({ label: c.nome, value: c.codigo }));
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -186,7 +186,7 @@ export class LancamentoCadastroComponent implements OnInit {
   private carregarPessoas() {
     return this.pessoaService.listarTodas()
       .then(pessoas => {
-        this.pessoas = pessoas.map(p => ({ label: p.nome, value: p.codigo }));
+        this.pessoas = pessoas.map((p: any) => ({ label: p.nome, value: p.codigo }));
       })
   }
 

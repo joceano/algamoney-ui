@@ -17,7 +17,7 @@ import { NaoAutorizadoComponent } from './nao-autorizado.component';
 import { ErrorHandlerService } from './error-handler.service';
 import { PessoaService } from './../pessoas/pessoa.service';
 import { LancamentoService } from './../lancamentos/lancamento.service';
-import { CategoriaService } from 'app/categorias/categoria.service';
+import { CategoriaService } from './../categorias/categoria.service';
 import { AuthService } from './../seguranca/auth.service';
 import { DashboardService } from '../dashboard/dashboard.service';
 import { RelatoriosService } from './../relatorios/relatorios.service';

@@ -1,9 +1,7 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { environment } from './../../environments/environment';
-import { Cidade, Pessoa } from 'app/core/model';
-import { Estado } from './../core/model';
+import { Estado, Cidade, Pessoa } from './../core/model';
 import { MoneyHttp } from './../seguranca/money-http';
 
 export class PessoaFiltro {
@@ -59,7 +57,7 @@ export class PessoaService {
   excluir(codigo: number): Promise<void> {
     return this.http.delete(`${this.pessoasUrl}/${codigo}`)
       .toPromise()
-      .then(() => null);
+      .then();
   }
 
   mudarStatus(codigo: number, ativo: boolean): Promise<void> {
@@ -68,7 +66,7 @@ export class PessoaService {
 
       return this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers })
       .toPromise()
-      .then(() => null);
+      .then();
   }
 
   adicionar(pessoa: Pessoa): Promise<Pessoa> {
@@ -87,7 +85,7 @@ export class PessoaService {
     return this.http.get<Estado[]>(this.estadosUrl).toPromise();
   }
 
-  pesquisarCidades(estado): Promise<Cidade[]> {
+  pesquisarCidades(estado: any): Promise<Cidade[]> {
     const params = new HttpParams().append('estado', estado);
     return this.http.get<Cidade[]>(this.cidadesUrl, { params }).toPromise();
   }

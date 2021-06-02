@@ -1,45 +1,39 @@
 <div class="container">
-
-  <div class="ui-g">
-
-    <form autocomplete="off" (ngSubmit)="pesquisar()">
-      <div class="ui-g-12">
+  <form autocomplete="off" (ngSubmit)="pesquisar()">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-12 p-md-6">
         <h1>Lançamentos</h1>
       </div>
-
-      <div class="ui-g-12 ui-fluid">
+      <div class="p-field p-col-12 p-md-9">
         <label>Descrição</label>
         <input pInputText type="text" name="descricao" [(ngModel)]="filtro.descricao">
       </div>
-
-      <div class="ui-g-12">
-        <label style="display: block;">Vencimento</label>
-        <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }"
-          name="vencimentoInicio" [(ngModel)]="filtro.dataVencimentoInicio"></p-calendar>
-
-        <label class="label-spaced">até</label>
-        <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }"
-          name="vencimentoFim" [(ngModel)]="filtro.dataVencimentoFim"></p-calendar>
+      <div class="p-field p-col-12">
+        <label>Vencimento</label>
+        <div class="p-formgroup-inline">
+          <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '105px' }"
+            name="vencimentoInicio" [(ngModel)]="filtro.dataVencimentoInicio"></p-calendar>
+          <label class="label-spaced">até</label>
+          <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '105px' }"
+            name="vencimentoFim" [(ngModel)]="filtro.dataVencimentoFim"></p-calendar>
+          </div>
       </div>
-
-      <div class="ui-g-12">
-        <button pButton type="submit" label="Pesquisar"></button>
+      <div class="p-field p-col-2">
+        <button style="width: 105px;" pButton type="submit" label="Pesquisar"></button>
       </div>
-    </form>
-
-  </div>
-
-  <div class="ui-g">
-    <div class="ui-g-12">
+    </div>
+  </form>
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col-12">
       <app-lancamentos-grid [lancamentos]="lancamentos"
                             [filtro]="filtro"
                             [totalRegistros]="totalRegistros"
                             (executarPesquisa)="pesquisar($event)"></app-lancamentos-grid>
     </div>
-
-    <div class="ui-g-12">
+  </div>
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col-2">
       <a pButton label="Novo Lançamento" routerLink="/lancamentos/novo"></a>
     </div>
   </div>
-
 </div>

@@ -7,13 +7,13 @@
     <form #f="ngForm" (ngSubmit)="gerar()">
       <div class="ui-g-10 relatorio-filtro">
         <label>Vencimento</label>
-        <p-calendar dateFormat="dd/mm/yy" required
+        <p-calendar dateFormat="dd.mm.yy"
           [inputStyle]="{ 'width': '95px'}"
           [(ngModel)]="periodoInicio" name="periodoInicio"></p-calendar>
 
         <label>até</label>
 
-        <p-calendar dateFormat="dd/mm/yy" required
+        <p-calendar dateFormat="dd.mm.yy"
           [inputStyle]="{ 'width': '95px'}"
           [(ngModel)]="periodoFim" name="periodoFim"></p-calendar>
       </div>

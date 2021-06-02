@@ -1,0 +1,16 @@
+.centralizar {
+  margin: 10px;
+}
+
+@media (min-width: 450px) {
+  .centralizar {
+    width: 450px;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+  }
+}

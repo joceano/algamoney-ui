@@ -16,10 +16,10 @@ export class DashboardComponent implements OnInit {
   options = {
     tooltips: {
       callbacks: {
-        label: (tooltipItem, data) => {
+        label: (tooltipItem: any, data: any) => {
           const dataset = data.datasets[tooltipItem.datasetIndex];
           const valor = dataset.data[tooltipItem.index];
-          const label = dataset.label ? (dataset.label + ': ') : '';
+          const label = dataset.label ? (dataset.label + ' R$: ') : ' R$ ';
 
           return label + this.decimalPipe.transform(valor, '1.2-2');
         }
@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private dashboardService: DashboardService,
     private decimalPipe: DecimalPipe
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.configurarGraficoPizza();
@@ -79,7 +79,7 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  private totaisPorCadaDiaMes(dados, diasDoMes) {
+  private totaisPorCadaDiaMes(dados: any, diasDoMes: any) {
     const totais: number[] = [];
     for (const dia of diasDoMes) {
       let total = 0;

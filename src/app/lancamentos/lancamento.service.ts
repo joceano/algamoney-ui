@@ -5,7 +5,7 @@ import * as moment from 'moment';
 
 import { MoneyHttp } from './../seguranca/money-http';
 import { environment } from './../../environments/environment';
-import { Lancamento } from 'app/core/model';
+import { Lancamento } from './../core/model';
 
 export class LancamentoFiltro {
   descricao: string;
@@ -66,7 +66,7 @@ export class LancamentoService {
   excluir(codigo: number): Promise<void> {
     return this.http.delete(`${this.lancamentosUrl}/${codigo}`)
       .toPromise()
-      .then(() => null);
+      .then();
   }
 
   adicionar(lancamento: Lancamento): Promise<Lancamento> {

@@ -1,32 +1,28 @@
 <div class="container">
-  <div class="ui-g">
-
-    <form autocomplete="off" (ngSubmit)="pesquisar()">
-      <div class="ui-g-12">
+  <form autocomplete="off" (ngSubmit)="pesquisar()">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-12 p-md-6">
         <h1>Pessoas</h1>
       </div>
-
-      <div class="ui-g-12 ui-fluid">
+      <div class="p-field p-col-12 p-md-9">
         <label>Nome</label>
         <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
       </div>
-
-      <div class="ui-g-12">
-        <button pButton type="submit" label="Pesquisar"></button>
+      <div class="p-field p-col-12">
+        <button style="width: 105px;" pButton type="submit" label="Pesquisar"></button>
       </div>
-    </form>
-
-  </div>
-
-  <div class="ui-g">
-    <div class="ui-g-12">
+    </div>
+  </form>
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col-12">
       <app-pessoas-grid [pessoas]="pessoas"
                         [filtro]="filtro"
                         [totalRegistros]="totalRegistros"
                         (executarPesquisa)="pesquisar($event)"></app-pessoas-grid>
     </div>
-
-    <div class="ui-g-12">
+  </div>
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col-2">
       <a pButton label="Nova Pessoa" routerLink="/pessoas/nova"></a>
     </div>
   </div>

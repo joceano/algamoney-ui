@@ -67,11 +67,11 @@ export class AuthService {
       .then(response => {
         this.armazenarToken(response.access_token);
         console.log('Novo access token criado!');
-        return Promise.resolve(null);
+        return Promise.resolve();
       })
       .catch(response => {
         console.log('Erro ao renovar token.', response);
-        return Promise.resolve(null);
+        return Promise.resolve();
       });
   }
 
@@ -80,7 +80,7 @@ export class AuthService {
     return !token || this.jwtHelper.isTokenExpired(token);
   }
 
-  temQualquerPermissao(roles) {
+  temQualquerPermissao(roles: any) {
     for (const role of roles) {
       if (this.temPermissao(role)) {
         return true;

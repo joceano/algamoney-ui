@@ -17,9 +17,9 @@ import { FormControl } from '@angular/forms';
 })
 export class MessageComponent {
 
-  @Input() control: FormControl;
-  @Input() error: string;
-  @Input() text: string;
+  @Input() control: any;
+  @Input() error: string = '';
+  @Input() text: string = '';
 
   temErro(): boolean {
     return this.control.hasError(this.error) && this.control.dirty;

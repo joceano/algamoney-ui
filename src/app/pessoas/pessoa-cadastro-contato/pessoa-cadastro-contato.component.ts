@@ -1,7 +1,7 @@
 import { FormControl } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Contato } from 'app/core/model';
+import { Contato } from './../../core/model';
 
 @Component({
   selector: 'app-pessoa-cadastro-contato',
@@ -10,10 +10,10 @@ import { Contato } from 'app/core/model';
 })
 export class PessoaCadastroContatoComponent implements OnInit {
 
-  @Input() contatos: Array<Contato>;
-  contato: Contato;
+  @Input() contatos: Array<Contato> = [];
+  contato = new Contato();
   exbindoFormularioContato = false;
-  contatoIndex: number;
+  contatoIndex = 0;
 
   constructor() { }
 
@@ -32,7 +32,7 @@ export class PessoaCadastroContatoComponent implements OnInit {
     this.contatoIndex = index;
   }
 
-  confirmarContato(frm: FormControl) {
+  confirmarContato(frm: any) {
     this.contatos[this.contatoIndex] = this.clonarContato(this.contato);
     this.exbindoFormularioContato = false;
     frm.reset();

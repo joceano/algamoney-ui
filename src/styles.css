@@ -14,8 +14,9 @@ a:hover, a:focus {
   text-decoration: underline;
 }
 
-a.ui-button:hover {
-  background-color: #005b9f;
+a.p-button:hover {
+  text-decoration: none;
+  background-color: #0b7ad1;
   color: white !important;
 }
 
@@ -29,6 +30,10 @@ label {
 
 .ui-dropdown-filter-container {
   width: 100%;
+}
+
+.container {
+  margin: 0 10px 0 10px;
 }
 
 @media (min-width: 1200px) {
@@ -57,20 +62,20 @@ label {
 }
 
 .col-acoes {
-  width: 100px;
+  width: 112px;
   text-align: center;
 }
 
 .col-acoes-header {
-  width: 100px;
+  width: 112px;
 }
 
-.col-acoes .ui-button {
+.col-acoes .p-button {
   margin: 1px;
 }
 
 .label-spaced {
-  margin: 5px;
+  margin: 10px 5px 0 5px;
 }
 
 .cadastro-acoes .ui-button {
