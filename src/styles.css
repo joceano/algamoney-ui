@@ -58,18 +58,24 @@ label {
 }
 
 .col-acoes {
-  width: 112px;
+  width: 90px;
   text-align: center;
 }
 
 .col-acoes-header {
-  width: 112px;
-}
-
-.col-acoes .p-button {
-  margin: 1px;
+  width: 90px;
 }
 
 .label-spaced {
   margin: 10px 5px 0 5px;
+}
+
+.button-table {
+  width: 25px !important;
+  height: 25px !important;
+}
+
+.button-table:hover {
+  background-color: #0b7ad1 !important;
+  color: white !important;
 }

@@ -7,7 +7,7 @@ import { MoneyHttp } from './../seguranca/money-http';
 export class PessoaFiltro {
   nome: string;
   pagina = 0;
-  itensPorPagina = 4;
+  itensPorPagina = 5;
 }
 
 @Injectable()

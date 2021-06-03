@@ -21,10 +21,9 @@
           <td>{{ contato.email }}</td>
           <td>{{ contato.telefone }}</td>
           <td class="col-acoes">
-            <button pButton icon="fa fa-pencil" type="button"
+            <button pButton pRipple type="button" icon="fa fa-pencil" class="p-button-text button-table"
               pTooltip="Editar" tooltipPosition="top" (click)="prepararEdicaoContato(contato, rowIndex)"></button>
-
-            <button pButton icon="fa fa-trash" type="button"
+            <button pButton pRipple type="button" icon="fa fa-trash" class="p-button-text button-table"
               pTooltip="Excluir" tooltipPosition="top" (click)="removerContato(rowIndex)"></button>
           </td>
         </tr>

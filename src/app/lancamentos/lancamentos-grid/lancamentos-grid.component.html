@@ -25,9 +25,9 @@
       <td class="col-valor" [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">
         {{ lancamento.valor | currency:'BRL':true:'1.2-2' }}</td>
       <td class="col-acoes">
-        <a pButton icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/lancamentos', lancamento.codigo]"></a>
-        <button pButton icon="fa fa-trash" pTooltip="Excluir" tooltipPosition="top"
-          (click)="confirmarExclusao(lancamento)"
+        <a class="p-button-text button-table" pButton icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/lancamentos', lancamento.codigo]"></a>
+        <button pButton pRipple type="button" icon="fa fa-trash" class="p-button-text button-table"
+          pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(lancamento)"
           [disabled]="!auth.temPermissao('ROLE_REMOVER_LANCAMENTO')"></button>
       </td>
     </tr>
