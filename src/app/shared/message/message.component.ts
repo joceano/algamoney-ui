@@ -4,12 +4,10 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-message',
   template: `
-    <div *ngIf="temErro()" class="ui-message ui-messages-error">
-      {{ text }}
-    </div>
+    <small *ngIf="temErro()" id="username-help" class="p-error">{{ text }}</small>
   `,
   styles: [`
-    .ui-messages-error {
+    .p-messages-error {
       margin: 0;
       margin-top: 4px;
     }
@@ -17,9 +15,9 @@ import { FormControl } from '@angular/forms';
 })
 export class MessageComponent {
 
+  @Input() error: string;
   @Input() control: any;
-  @Input() error: string = '';
-  @Input() text: string = '';
+  @Input() text: string;
 
   temErro(): boolean {
     return this.control.hasError(this.error) && this.control.dirty;

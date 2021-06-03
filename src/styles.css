@@ -28,10 +28,6 @@ label {
   font-weight: bold;
 }
 
-.ui-dropdown-filter-container {
-  width: 100%;
-}
-
 .container {
   margin: 0 10px 0 10px;
 }
@@ -76,10 +72,6 @@ label {
 
 .label-spaced {
   margin: 10px 5px 0 5px;
-}
-
-.cadastro-acoes .ui-button {
-  margin-right: 5px;
 }
 
 .relatorio-filtro {

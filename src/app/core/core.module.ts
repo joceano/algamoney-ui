@@ -9,7 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
-import { MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api'
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';

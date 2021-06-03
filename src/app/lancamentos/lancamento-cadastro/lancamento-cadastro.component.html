@@ -1,28 +1,24 @@
 <div class="container">
   <form autocomplete="off" (ngSubmit)="salvar()" [formGroup]="formulario">
-
-    <div class="ui-g">
-
-      <div class="ui-g-12">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-12">
         <h1>{{ editando ? 'Edição de' : 'Novo' }} Lançamento</h1>
       </div>
-
-      <div class="ui-g-12">
-        <p-selectButton name="tipo" [options]="tipos" formControlName="tipo"></p-selectButton>
+      <div class="p-field p-col-12">
+        <div class="p-field p-col-6 p-sm-4 p-md-3" style="padding-left: 0;">
+          <p-selectButton name="tipo" [options]="tipos" formControlName="tipo"></p-selectButton>
+        </div>
       </div>
-
-      <div class="ui-g-6 ui-md-3 ui-fluid">
+      <div class="p-field p-col-6 p-md-3">
         <label>Vencimento</label>
         <p-calendar dateFormat="dd/mm/yy" name="vencimento" formControlName="dataVencimento"></p-calendar>
-        <app-message [control]="formulario.get('dataVencimento')" error="required" text="Informe um vencimento"></app-message>
+        <app-message [control]="formulario.get('dataVencimento')" error="required" text="Informe uma data de vencimento"></app-message>
       </div>
-
-      <div class="ui-g-6 ui-md-3 ui-fluid">
+      <div class="p-field p-col-6 p-md-3">
         <label>{{formulario.get('tipo').value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
         <p-calendar dateFormat="dd/mm/yy" name="dataPagamento" formControlName="dataPagamento"></p-calendar>
       </div>
-
-      <div class="ui-g-12 ui-md-9 ui-fluid">
+      <div class="p-field p-col-12 p-md-9">
         <label>Descrição</label>
         <input pInputText type="text" name="descricao" formControlName="descricao">
         <app-message [control]="formulario.get('descricao')" error="obrigatoriedade"
@@ -30,58 +26,51 @@
         <app-message [control]="formulario.get('descricao')" error="tamanhoMinimo"
           text="Mínimo de {{formulario.get('descricao').errors?.tamanhoMinimo?.tamanho}} caracteres"></app-message>
       </div>
-
-      <div class="ui-g-12 ui-md-3 ui-fluid">
+      <div class="p-field p-col-12 p-md-3">
         <label>Valor</label>
         <input pInputText type="text" placeholder="0,00" currencyMask
           [options]="{prefix: '', thousands: '.', decimal: ',', allowNegative: false}"
           name="valor" formControlName="valor">
       </div>
-
-      <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="categoria">
+      <div class="p-field p-col-12 p-md-6" formGroupName="categoria">
         <label>Categoria</label>
         <p-dropdown [options]="categorias" placeholder="Selecione" name="categoria"
         formControlName="codigo"></p-dropdown>
       </div>
-
-      <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="pessoa">
+      <div class="p-field p-col-12 p-md-6" formGroupName="pessoa">
         <label>Pessoa</label>
         <p-dropdown [options]="pessoas" placeholder="Selecione" [filter]="true" name="pessoa"
         formControlName="codigo"></p-dropdown>
       </div>
-
-      <div class="ui-g-12 ui-fluid">
+      <div class="p-field p-col-12">
         <label>Observação</label>
         <textarea pInputTextarea rows="3" name="observacao" formControlName="observacao"></textarea>
       </div>
-
-      <div class="ui-g-6 ui-g-offset-6 ui-md-2 ui-md-offset-10 ui-fluid" *ngIf="!formulario.get('anexo').value">
+      <div class="p-field p-col-12 p-d-flex p-jc-end" *ngIf="!formulario.get('anexo').value">
+        <p-progressSpinner [hidden]="!uploadEmAndamento" [style]="{ width: '45px', height: '45px' }"></p-progressSpinner>
         <p-fileUpload name="anexo" mode="basic" [auto]="true"
           chooseLabel="Anexar" accept="image/*,application/*"
           [url]="urlUploadAnexo"
           (onBeforeSend)="antesUploadAnexo($event)"
           (onUpload)="aoTerminarUploadAnexo($event)"
           (onError)="erroUpload($event)"
-          [hidden]="uploadEmAndamento"></p-fileUpload>
-
-        <p-progressSpinner [hidden]="!uploadEmAndamento" [style]="{ width: '25px', height: '25px' }"></p-progressSpinner>
+          [hidden]="uploadEmAndamento"
+          [style]="{ width: '200px'}"></p-fileUpload>
       </div>
-
-      <div class="ui-g-12" dir="rtl" *ngIf="formulario.get('anexo').value">
-        <button pButton type="button" class="ui-button-danger" icon="fa-close"
+      <div class="p-field p-col-12" dir="rtl" *ngIf="formulario.get('anexo').value">
+        <button pButton type="button" class="ui-button-danger" icon="fa fa-close"
           pTooltip="Remover anexo" tooltipPosition="top" (click)="removerAnexo()"></button>
 
         <a target="_blank" pTooltip="Baixar anexo" tooltipPosition="top"
           [href]="configurarURLcomProtocolo()">{{ nomeAnexo }}</a>
       </div>
-
-      <div class="ui-g-12 cadastro-acoes">
-        <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid || uploadEmAndamento"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo()"></button>
-        <a routerLink="/lancamentos">Voltar para a pesquisa</a>
+      <div class="p-field p-col-12">
+        <div class="p-d-flex">
+          <button style="width: 100px;" pButton type="submit" label="Salvar" [disabled]="formulario.invalid || uploadEmAndamento"></button>
+          <button class="p-ml-1" style="width: 100px;" pButton type="button" label="Novo" (click)="novo()"></button>
+          <a class="p-ml-1 p-as-end" routerLink="/lancamentos">Voltar para a pesquisa</a>
+        </div>
       </div>
-
     </div>
-
   </form>
 </div>
