@@ -73,9 +73,3 @@ label {
 .label-spaced {
   margin: 10px 5px 0 5px;
 }
-
-.relatorio-filtro {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}

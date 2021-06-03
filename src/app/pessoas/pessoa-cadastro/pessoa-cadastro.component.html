@@ -1,77 +1,65 @@
 <div class="container">
   <form #pessoaForm="ngForm" autocomplete="off" (ngSubmit)="salvar(pessoaForm)">
-
-    <div class="ui-g">
-
-      <div class="ui-g-12">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-12">
         <h1>{{ editando ? 'Edição de' : 'Nova' }} Pessoa</h1>
       </div>
-
-      <div class="ui-g-12 ui-fluid">
+      <div class="p-field p-col-12">
         <label>Nome</label>
         <input pInputText type="text" name="nome" [(ngModel)]="pessoa.nome" #nome="ngModel" required minlength="5">
         <app-message [control]="nome" error="required" text="Informe um nome"></app-message>
         <app-message [control]="nome" error="minlength" text="Mínimo de {{nome.errors?.minlength?.requiredLength}} caracteres"></app-message>
       </div>
-
-      <div class="ui-g-12 ui-md-9 ui-fluid">
+      <div class="p-field p-col-12 p-md-9">
         <label>Logradouro</label>
         <input pInputText type="text" name="logradouro" [(ngModel)]="pessoa.endereco.logradouro" #logradouro="ngModel" required>
         <app-message [control]="logradouro" error="required" text="Informe um logradouro"></app-message>
       </div>
-
-      <div class="ui-g-12 ui-md-3 ui-fluid">
+      <div class="p-field p-col-12 p-md-3">
         <label>Número</label>
         <input pInputText type="text" name="numero" [(ngModel)]="pessoa.endereco.numero" #numero="ngModel" required>
         <app-message [control]="numero" error="required" text="Informe um número"></app-message>
       </div>
-
-      <div class="ui-g-12 ui-md-4 ui-fluid">
+      <div class="p-field p-col-12 p-md-4">
         <label>Complemento</label>
         <input pInputText type="text" name="complemento" [(ngModel)]="pessoa.endereco.complemento" #complemento="ngModel">
       </div>
-
-      <div class="ui-g-12 ui-md-4 ui-fluid">
+      <div class="p-field p-col-12 p-md-4">
         <label>Bairro</label>
         <input pInputText type="text" name="bairro" [(ngModel)]="pessoa.endereco.bairro" #bairro="ngModel" required>
         <app-message [control]="bairro" error="required" text="Informe um bairro"></app-message>
       </div>
-
-      <div class="ui-g-12 ui-md-4 ui-fluid">
+      <div class="p-field p-col-12 p-md-4">
         <label>CEP</label>
         <p-inputMask mask="99.999-999" name="cep" [(ngModel)]="pessoa.endereco.cep" #cep="ngModel"></p-inputMask>
         <app-message [control]="cep" error="required" text="Informe um CEP"></app-message>
       </div>
-
-      <div class="ui-g-12 ui-md-6 ui-fluid">
+      <div class="p-field p-col-12 p-md-6">
         <label>Estado</label>
         <p-dropdown placeholder="Selecione..." [filter]="true" [options]="estados"
           [(ngModel)]="estadoSelecionado" name="estadoSelecionado" (onChange)="carregarCidades()"
           #estado="ngModel"></p-dropdown>
         <app-message [control]="estado" error="required" text="Informe o estado"></app-message>
       </div>
-
-      <div class="ui-g-12 ui-md-6 ui-fluid">
+      <div class="p-field p-col-12 p-md-6">
         <label>Cidade</label>
         <p-dropdown placeholder="Selecione..." [filter]="true" [options]="cidades"
           [(ngModel)]="pessoa.endereco.cidade.codigo" name="cidade"
           #cidade="ngModel" [disabled]="!estadoSelecionado"></p-dropdown>
         <app-message [control]="cidade" error="required" text="Informe a cidade"></app-message>
       </div>
-
-      <div class="ui-g-12">
+      <div class="p-field p-col-12">
         <p-panel header="Contatos">
           <app-pessoa-cadastro-contato [contatos]="pessoa.contatos"></app-pessoa-cadastro-contato>
         </p-panel>
       </div>
-
-      <div class="ui-g-12 cadastro-acoes">
-        <button pButton type="submit" label="Salvar" [disabled]="pessoaForm.invalid"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo(pessoaForm)"></button>
-        <a routerLink="/pessoas">Voltar para a pesquisa</a>
+      <div class="p-field p-col-12">
+        <div class="p-d-flex">
+          <button style="width: 100px;" pButton type="submit" label="Salvar" [disabled]="pessoaForm.invalid"></button>
+          <button class="p-ml-1" style="width: 100px;" pButton type="button" label="Novo" (click)="novo(pessoaForm)"></button>
+          <a class="p-ml-1 p-as-end" routerLink="/pessoas">Voltar para a pesquisa</a>
+        </div>
       </div>
-
     </div>
-
   </form>
 </div>
