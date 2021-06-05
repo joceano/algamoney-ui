@@ -59,7 +59,7 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   aoTerminarUploadAnexo(event: any) {
-    const anexo = JSON.parse(event.xhr.response);
+    const anexo = event.originalEvent.body;
     this.formulario.patchValue({
       anexo: anexo.nome,
       urlAnexo: anexo.url

@@ -1,12 +1,12 @@
 <p-table [value]="pessoas"
          [rows]="5"
+         [rowHover]="true"
          [paginator]="true"
          [responsive]="true"
          [lazy]="true"
          [totalRecords]="totalRegistros"
          (onLazyLoad)="aoMudarPagina($event)"
          #tabela>
-
   <ng-template pTemplate="header">
     <tr>
       <th>Nome</th>
@@ -16,7 +16,6 @@
       <th class="col-acoes-header"></th>
     </tr>
   </ng-template>
-
   <ng-template pTemplate="body" let-pessoa>
     <tr>
       <td>{{ pessoa.nome }}</td>
@@ -33,7 +32,6 @@
       </td>
     </tr>
   </ng-template>
-
   <ng-template pTemplate="emptymessage">
     <tr>
       <td colspan="6">
