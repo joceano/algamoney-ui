@@ -43,8 +43,12 @@ export class PessoaCadastroContatoComponent implements OnInit {
   }
 
   clonarContato(contato: Contato): Contato {
-    return new Contato(contato.codigo, contato.nome,
-      contato.email, contato.telefone);
+    let novoContato = new Contato();
+    novoContato.codigo = contato.codigo;
+    novoContato.email = contato.email;
+    novoContato.nome = contato.nome;
+    novoContato.telefone = contato.telefone;
+    return novoContato;
   }
 
   get editando() {

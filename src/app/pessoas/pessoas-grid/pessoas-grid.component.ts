@@ -1,3 +1,4 @@
+import { Pessoa } from './../../core/model';
 import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 
 import { LazyLoadEvent, ConfirmationService } from 'primeng/api';
@@ -16,7 +17,7 @@ import {Table} from 'primeng/table';
 export class PessoasGridComponent {
 
   @Input() pessoas = [];
-  @Input() totalRegistros = 0;
+  @Input() totalRegistros: number;
   @Input() filtro: PessoaFiltro;
 
   @Output() executarPesquisa = new EventEmitter();
@@ -29,7 +30,7 @@ export class PessoasGridComponent {
     private errorHandler: ErrorHandlerService
   ) {}
 
-  alternarStatus(pessoa: any): void {
+  alternarStatus(pessoa: Pessoa): void {
     const novoStatus = !pessoa.ativo;
     this.pessoaService.mudarStatus(pessoa.codigo, novoStatus)
       .then(() => {
@@ -52,7 +53,7 @@ export class PessoasGridComponent {
     this.executarPesquisa.emit(pagina);
   }
 
-  confirmarExclusao(pessoa: any) {
+  confirmarExclusao(pessoa: Pessoa) {
     this.confirmation.confirm({
       message: 'Tem certeza que deseja excluir?',
       accept: () => {
@@ -61,7 +62,7 @@ export class PessoasGridComponent {
     });
   }
 
-  private excluir(pessoa: any) {
+  private excluir(pessoa: Pessoa) {
     this.pessoaService.excluir(pessoa.codigo)
       .then(() => {
         this.exclusaoSucesso();
