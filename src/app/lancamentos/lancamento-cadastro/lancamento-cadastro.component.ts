@@ -9,7 +9,7 @@ import { ErrorHandlerService } from './../../core/error-handler.service';
 import { CategoriaService } from './../../categorias/categoria.service';
 import { PessoaService } from './../../pessoas/pessoa.service';
 import { LancamentoService } from './../lancamento.service';
-import { Lancamento } from './../../core/model';
+import { Lancamento, Pessoa, Categoria } from './../../core/model';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -25,7 +25,7 @@ export class LancamentoCadastroComponent implements OnInit {
 
   categorias = [];
   pessoas = [];
-  formulario: any;
+  formulario: FormGroup;
   uploadEmAndamento = false;
 
   constructor(
@@ -73,7 +73,7 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   configurarURLcomProtocolo() {
-    return `https://${this.formulario.get('urlAnexo').value}`;
+    return `https://${this.formulario.get('urlAnexo')?.value}`;
   }
 
   removerAnexo() {
@@ -84,7 +84,7 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   get nomeAnexo() {
-    const nome = this.formulario.get('anexo').value;
+    const nome = this.formulario.get('anexo')?.value;
     if (nome) {
       return nome.substring(nome.indexOf('_') + 1, nome.length);
     }
@@ -98,17 +98,17 @@ export class LancamentoCadastroComponent implements OnInit {
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
       codigo: [],
-      tipo: ['RECEITA', Validators.required],
-      dataVencimento: [null, Validators.required],
+      tipo: [ 'RECEITA', Validators.required ],
+      dataVencimento: [ null, Validators.required ],
       dataPagamento: [],
-      descricao: [null, [this.validarObrigatoriedade, this.validarTamanhoMinimo(5)]],
-      valor: [null, Validators.required],
+      descricao: [null, [ this.validarObrigatoriedade, this.validarTamanhoMinimo(5) ]],
+      valor: [ null, Validators.required ],
       pessoa: this.formBuilder.group({
-        codigo: [null, Validators.required],
+        codigo: [ null, Validators.required ],
         nome: []
       }),
       categoria: this.formBuilder.group({
-        codigo: [null, Validators.required],
+        codigo: [ null, Validators.required ],
         nome: []
       }),
       observacao: [],
@@ -128,7 +128,7 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   get editando() {
-    return Boolean(this.formulario.get('codigo').value);
+    return Boolean(this.formulario.get('codigo')?.value);
   }
 
   private carregarLancamento(codigo: number) {
@@ -150,9 +150,13 @@ export class LancamentoCadastroComponent implements OnInit {
 
   novo() {
     this.formulario.reset();
-    setTimeout(function() {
-      // this.lancamento = new Lancamento();
+
+    setTimeout(function(this: LancamentoCadastroComponent) {
+      this.formulario.patchValue({
+        tipo: 'RECEITA'
+      });
     }.bind(this), 1);
+
     this.router.navigate(['/lancamentos/novo']);
   }
 
@@ -178,7 +182,7 @@ export class LancamentoCadastroComponent implements OnInit {
   private carregarCategorias() {
     return this.categoriaService.listarTodas()
       .then(categorias => {
-        this.categorias = categorias.map((c: any) => ({ label: c.nome, value: c.codigo }));
+        this.categorias = categorias.map((c: Categoria) => ({ label: c.nome, value: c.codigo }));
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -186,12 +190,12 @@ export class LancamentoCadastroComponent implements OnInit {
   private carregarPessoas() {
     return this.pessoaService.listarTodas()
       .then(pessoas => {
-        this.pessoas = pessoas.map((p: any) => ({ label: p.nome, value: p.codigo }));
+        this.pessoas = pessoas.map((p: Pessoa) => ({ label: p.nome, value: p.codigo }));
       })
   }
 
   private atualizarTituloEdicao() {
-    this.title.setTitle(`Edição de lançamento: ${this.formulario.get('descricao').value}`);
+    this.title.setTitle(`Edição de lançamento: ${this.formulario.get('descricao')?.value}`);
   }
 
 }

@@ -1,20 +1,20 @@
 export class Estado {
-  codigo = 0;
-  nome = '';
+  codigo: number;
+  nome: string;
 }
 
 export class Cidade {
-  codigo = 0;
-  nome = '';
+  codigo: number;
+  nome: string;
   estado = new Estado();
 }
 
 export class Endereco {
-  logradouro = '';
-  numero = '';
-  complemento = '';
-  bairro = '';
-  cep = '';
+  logradouro: string;
+  numero: string;
+  complemento: string;
+  bairro: string;
+  cep: string;
   cidade = new Cidade();
 }
 
@@ -25,39 +25,40 @@ export class Contato {
   telefone: string;
 
   constructor(
-    codigo = 0,
-    nome = '',
-    email = '',
-    telefone = '') {
+    codigo: number = 0,
+    nome: string = '',
+    email: string = '',
+    telefone: string = '') {
       this.codigo = codigo;
       this.nome = nome;
       this.email = email;
       this.telefone = telefone;
-    }
+  }
 }
 
 export class Pessoa {
-  codigo = 0;
-  nome = '';
-  ativo = true;
+  codigo: number;
+  nome: string;
   endereco = new Endereco();
+  ativo = true;
   contatos = new Array<Contato>();
 }
 
 export class Categoria {
-  codigo = 0;
+  codigo: number;
+  nome: string;
 }
 
 export class Lancamento {
-  codigo = 0;
+  codigo: number;
   tipo = 'RECEITA';
-  descricao = '';
-  dataVencimento = new Date;
-  dataPagamento = new Date;
-  valor = 0;
-  observacao = '';
+  descricao: string;
+  dataVencimento: Date;
+  dataPagamento: Date;
+  valor: number;
+  observacao: string;
   pessoa = new Pessoa();
   categoria = new Categoria();
-  anexo = '';
-  urlAnexo = '';
+  anexo: string;
+  urlAnexo: string;
 }

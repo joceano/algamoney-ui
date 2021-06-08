@@ -15,7 +15,7 @@
         <app-message [control]="formulario.get('dataVencimento')" error="required" text="Informe uma data de vencimento"></app-message>
       </div>
       <div class="p-field p-col-6 p-md-3">
-        <label>{{formulario.get('tipo').value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
+        <label>{{formulario.get('tipo')?.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
         <p-calendar dateFormat="dd/mm/yy" name="dataPagamento" formControlName="dataPagamento"></p-calendar>
       </div>
       <div class="p-field p-col-12 p-md-9">
@@ -24,7 +24,7 @@
         <app-message [control]="formulario.get('descricao')" error="obrigatoriedade"
           text="Informe uma descrição"></app-message>
         <app-message [control]="formulario.get('descricao')" error="tamanhoMinimo"
-          text="Mínimo de {{formulario.get('descricao').errors?.tamanhoMinimo?.tamanho}} caracteres"></app-message>
+          text="Mínimo de {{formulario.get('descricao')?.errors?.tamanhoMinimo?.tamanho}} caracteres"></app-message>
       </div>
       <div class="p-field p-col-12 p-md-3">
         <label>Valor</label>
@@ -46,7 +46,7 @@
         <label>Observação</label>
         <textarea pInputTextarea rows="3" name="observacao" formControlName="observacao"></textarea>
       </div>
-      <div class="p-field p-col-12 p-d-flex p-jc-end" *ngIf="!formulario.get('anexo').value">
+      <div class="p-field p-col-12 p-d-flex p-jc-end" *ngIf="!formulario.get('anexo')?.value">
         <p-progressSpinner [hidden]="!uploadEmAndamento" [style]="{ width: '45px', height: '45px' }"></p-progressSpinner>
         <p-fileUpload name="anexo" mode="basic" [auto]="true"
           chooseLabel="Anexar" accept="image/*,application/*"
@@ -57,7 +57,7 @@
           [hidden]="uploadEmAndamento"
           [style]="{ width: '200px'}"></p-fileUpload>
       </div>
-      <div class="p-field p-col-12" dir="rtl" *ngIf="formulario.get('anexo').value">
+      <div class="p-field p-col-12" dir="rtl" *ngIf="formulario.get('anexo')?.value">
         <button pButton type="button" class="ui-button-danger" icon="fa fa-close"
           pTooltip="Remover anexo" tooltipPosition="top" (click)="removerAnexo()"></button>
 

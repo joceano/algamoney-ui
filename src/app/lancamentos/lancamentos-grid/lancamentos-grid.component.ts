@@ -1,3 +1,4 @@
+import { Lancamento } from './../../core/model';
 import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 
 import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
@@ -15,8 +16,8 @@ import { Table } from 'primeng/table';
 })
 export class LancamentosGridComponent {
 
-  @Input() lancamentos = [];
-  @Input() totalRegistros = 0;
+  @Input() lancamentos: Lancamento[];
+  @Input() totalRegistros: number;
   @Input() filtro: LancamentoFiltro;
 
   @Output() executarPesquisa = new EventEmitter();
@@ -38,7 +39,7 @@ export class LancamentosGridComponent {
     this.pesquisar(pagina);
   }
 
-  confirmarExclusao(lancamento: any) {
+  confirmarExclusao(lancamento: Lancamento) {
     this.confirmation.confirm({
       message: 'Tem certeza que deseja excluir?',
       accept: () => {
@@ -47,7 +48,7 @@ export class LancamentosGridComponent {
     });
   }
 
-  private excluir(lancamento: any) {
+  private excluir(lancamento: Lancamento) {
     this.lancamentoService.excluir(lancamento.codigo)
       .then(() => {
         this.exclusaoSucesso();
