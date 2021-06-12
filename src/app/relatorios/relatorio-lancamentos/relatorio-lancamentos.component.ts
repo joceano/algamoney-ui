@@ -9,8 +9,8 @@ import { RelatoriosService } from './../relatorios.service';
 })
 export class RelatorioLancamentosComponent implements OnInit {
 
-  periodoInicio = new Date();
-  periodoFim = new Date();
+  periodoInicio: Date;
+  periodoFim: Date;
 
   constructor(private relatoriosService: RelatoriosService) { }
 
