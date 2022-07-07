@@ -23,7 +23,7 @@
     "chart.js": "^2.9.4",
     "core-js": "^3.12.0",
     "font-awesome": "^4.7.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "ngx-currency": "^2.5.2",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
